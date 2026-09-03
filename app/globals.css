@@ -96,11 +96,11 @@
 }
 
 @theme {
-  --text-eyebrow: 0.6875rem; /* 11px */
+  --text-eyebrow: 0.6875rem;
   --text-eyebrow--line-height: 1;
   --text-eyebrow--letter-spacing: 0.14em;
 
-  --text-eyebrow-sm: 0.625rem; /* 10px */
+  --text-eyebrow-sm: 0.625rem; 
   --text-eyebrow-sm--line-height: 1;
   --text-eyebrow-sm--letter-spacing: 0.16em;
 
