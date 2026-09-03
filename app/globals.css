@@ -98,13 +98,16 @@
 @theme {
   --text-eyebrow: 0.6875rem;
   --text-eyebrow--line-height: 1;
-  --text-eyebrow--letter-spacing: 0.14em;
+  --text-eyebrow--letter-spacing: 0.16em;
 
   --text-eyebrow-sm: 0.625rem; 
   --text-eyebrow-sm--line-height: 1;
-  --text-eyebrow-sm--letter-spacing: 0.16em;
+  --text-eyebrow-sm--letter-spacing: 0.1em;
 
   --container-page: 1280px;
+  --spacing-gutter: clamp(16px, 4vw, 56px);
+
+  --default-transition-duration: 300ms;
 
   --radius-pill: 999px;
 
@@ -186,6 +189,17 @@
     background: none;
     border: none;
     cursor: pointer;
+  }
+
+  /* The design's dominant transition (10 of 20 uses) is a 300ms colour
+     change on hover. Declared once here so no link or button has to
+     repeat it. Transform and shadow stay opt-in via transition-* utilities,
+     since animating them everywhere is wasteful. */
+  a,
+  button {
+    transition-property: color, background-color, border-color;
+    transition-duration: var(--default-transition-duration);
+    transition-timing-function: var(--default-transition-timing-function);
   }
 
   ::selection {

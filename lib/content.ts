@@ -369,7 +369,7 @@ export const CONTACT = {
     { label: "LinkedIn", value: "Connect →", href: SITE.linkedin, external: true },
     { label: "GitHub", value: "See the code →", href: SITE.github, external: true },
   ] satisfies ContactLink[],
-  resumeLabel: "Résumé ↓",
+  resumeLabel: "Résumé",
 } as const;
 
 /* ── Footer ───────────────────────────────────────────────── */
