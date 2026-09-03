@@ -26,7 +26,7 @@ const spaceMono = Space_Mono({
 export const metadata: Metadata = {
   title: "Mahansh Aditya — Software Engineer",
   description:
-    "A portfolio for mahansh adity",
+    "Mahansh Aditya is a software engineer who builds full-stack products, backend systems, and scalable applications from idea to production.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
