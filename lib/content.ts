@@ -380,6 +380,7 @@ export const CONTACT = {
     { label: "GitHub", value: "See the code →", href: SITE.github, external: true },
   ] satisfies ContactLink[],
   resumeLabel: "Résumé",
+  resumeCta: "Download résumé",
 } as const;
 
 /* ── Footer ───────────────────────────────────────────────── */
