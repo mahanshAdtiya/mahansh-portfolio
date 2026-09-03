@@ -65,6 +65,7 @@ export const HERO = {
   headlineEmphasis: "the whole stack.",
   intro:
     "Freelance builds — web apps, storefronts, internal tools — taken from architecture to interface, by one person who does both.",
+  scrollLabel: "Scroll",
 } as const;
 
 /* ── About ────────────────────────────────────────────────── */

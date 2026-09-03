@@ -1,4 +1,5 @@
 import { CONTACT, SITE } from "@/lib/content";
+import { Reveal } from "./reveal";
 import { SectionHeading } from "./section-heading";
 
 export function Contact() {
@@ -8,7 +9,7 @@ export function Contact() {
       data-theme="dark"
       className="flow-root bg-page text-heading pt-[clamp(72px,16vh,170px)]"
     >
-      <div className="mx-auto max-w-page px-gutter">
+      <Reveal className="mx-auto max-w-page px-gutter">
         <SectionHeading
           num="06"
           title="Contact"
@@ -38,7 +39,7 @@ export function Contact() {
             </li>
           ))}
         </ul>
-      </div>
+      </Reveal>
     </section>
   );
 }

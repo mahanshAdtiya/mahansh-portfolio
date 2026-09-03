@@ -1,4 +1,5 @@
 import { FOOTER } from "@/lib/content";
+import { Reveal } from "./reveal";
 
 export function Footer() {
   return (
@@ -6,7 +7,7 @@ export function Footer() {
       data-theme="dark"
       className="bg-page text-heading pt-[clamp(64px,12vh,130px)] pb-[clamp(32px,5vh,56px)]"
     >
-      <div className="mx-auto max-w-page px-gutter">
+      <Reveal className="mx-auto max-w-page px-gutter">
         <div className="relative overflow-hidden border-t border-edge">
           <div
             aria-hidden="true"
@@ -20,7 +21,7 @@ export function Footer() {
             <span>{FOOTER.education}</span>
           </div>
         </div>
-      </div>
+      </Reveal>
     </footer>
   );
 }
