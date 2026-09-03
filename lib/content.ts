@@ -29,32 +29,42 @@ export const NAV: NavItem[] = [
 
 /* ── Hero ─────────────────────────────────────────────────── */
 
+export type HeroCard = {
+  label: string;
+  title: string;
+  detail: string;
+  href?: string;
+  external?: boolean;
+};
+
+const heroCards: HeroCard[] = [
+  {
+    label: "Now",
+    title: "Software Engineer at Headout",
+    detail: "API optimization, service architecture, observability",
+  },
+  {
+    label: "Stack",
+    title: "Kotlin · Spring Boot · Golang · Next.js",
+    detail: "PostgreSQL, Kafka, Redis, AWS",
+  },
+  {
+    label: "Shipped",
+    title: "Anarchist",
+    href: "https://www.anarchist.co.in/",
+    external: true,
+    detail: "D2C storefront and CMS, built solo",
+  },
+];
+
 export const HERO = {
-  cards: [
-    {
-      label: "Now",
-      title: "Software Engineer at Headout",
-      detail: "async jobs, exports and notification delivery",
-    },
-    {
-      label: "Stack",
-      title: "Kotlin · Spring Boot · Golang · Next.js",
-      detail: "PostgreSQL, Kafka, Redis, AWS",
-    },
-    {
-      label: "Shipped",
-      title: "Anarchist ↗",
-      href: "#work",
-      detail: "D2C storefront and CMS, built solo",
-    },
-  ],
+  cards: heroCards,
   meta: ["Bengaluru, IND", "Headout · since Aug 2025"],
   metaAccent: "Available for freelance work",
   headline: "One engineer,",
   headlineEmphasis: "the whole stack.",
   intro:
     "Freelance builds — web apps, storefronts, internal tools — taken from architecture to interface, by one person who does both.",
-  scrollLabel: "Scroll",
 } as const;
 
 /* ── About ────────────────────────────────────────────────── */
