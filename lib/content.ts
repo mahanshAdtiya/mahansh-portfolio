@@ -354,12 +354,6 @@ export const PROJECTS: Project[] = [
     tech: "Java · LibGDX",
     href: SITE.github,
   },
-  {
-    title: "Stock Rev",
-    description: "Watchlists with live prices, fed by Alpha Vantage market data.",
-    tech: "React · TypeScript · Django · SQLite",
-    href: SITE.github,
-  },
 ];
 
 /* ── Contact ──────────────────────────────────────────────── */
