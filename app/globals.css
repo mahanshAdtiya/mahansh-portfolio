@@ -21,6 +21,7 @@
   --ink-500: #3a2f2f;
   --ink-600: #382a2a;
   --ink-700: #2d2222;
+  --ink-750: #241b1b;
   --ink-800: #221a1a;
   --ink-900: #201818;
   --ink-950: #1a1414;
@@ -59,6 +60,7 @@
 
   --accent: var(--oxblood);
   --on-accent: var(--sand-50);
+  --watermark: var(--sand-100);
 }
 
 [data-theme="dark"] {
@@ -80,6 +82,7 @@
 
   --accent: var(--terracotta);
   --on-accent: var(--ink-950);
+  --watermark: var(--ink-750);
 }
 
 @theme inline {
@@ -101,6 +104,7 @@
 
   --color-accent: var(--accent);
   --color-on-accent: var(--on-accent);
+  --color-watermark: var(--watermark);
 
   --font-sans: var(--font-sora), system-ui, sans-serif;
   --font-display: var(--font-instrument), Georgia, "Times New Roman", serif;

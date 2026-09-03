@@ -10,7 +10,7 @@ export function Footer() {
         <div className="relative overflow-hidden border-t border-edge">
           <div
             aria-hidden="true"
-            className="mt-[clamp(24px,4vh,44px)] mb-[-0.16em] text-center font-display text-[21.5vw] leading-[0.74] tracking-[-0.035em] whitespace-nowrap text-surface select-none pointer-events-none"
+            className="mt-[clamp(24px,4vh,44px)] mb-[-0.16em] text-center font-display text-[21.5vw] leading-[0.74] tracking-[-0.035em] whitespace-nowrap text-watermark select-none pointer-events-none"
           >
             {FOOTER.watermark}
           </div>
