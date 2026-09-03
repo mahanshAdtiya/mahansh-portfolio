@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Instrument_Serif, Sora, Space_Mono } from "next/font/google";
+import { SiteHeader } from "./_components/site-header";
+import { Footer } from "./_components/footer";
 import "./globals.css";
 
 const sora = Sora({
@@ -36,7 +38,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       data-theme="light"
       className={`${sora.variable} ${instrumentSerif.variable} ${spaceMono.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <SiteHeader />
+        <main className="pt-header">{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }

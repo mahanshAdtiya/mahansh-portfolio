@@ -5,8 +5,8 @@ import { MobileMenu } from "./mobile-menu";
 
 export function SiteHeader() {
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-edge bg-page/92 backdrop-blur-[14px]">
-      <div className="max-w-page mx-auto px-gutter py-3 flex flex-row justify-between items-center gap-5">
+    <header className="fixed inset-x-0 top-0 z-50 h-header border-b border-edge bg-page/92 backdrop-blur-[14px]">
+      <div className="max-w-page mx-auto px-gutter h-full flex flex-row justify-between items-center gap-5">
         <Wordmark />
 
         <DesktopNav />

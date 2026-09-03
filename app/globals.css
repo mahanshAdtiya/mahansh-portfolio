@@ -29,6 +29,16 @@
   --terracotta: #cf7b6f;
 }
 
+:root {
+  --header-height: 68px;
+}
+
+@media (min-width: 64rem) {
+  :root {
+    --header-height: 76px;
+  }
+}
+
 :root,
 [data-theme="light"] {
   color-scheme: light;
@@ -73,6 +83,8 @@
 }
 
 @theme inline {
+  --spacing-header: var(--header-height);
+
   --color-page: var(--page);
   --color-surface: var(--surface);
   --color-surface-hover: var(--surface-hover);
@@ -117,6 +129,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: var(--header-height);
     -webkit-text-size-adjust: 100%;
   }
 
@@ -191,10 +204,6 @@
     cursor: pointer;
   }
 
-  /* The design's dominant transition (10 of 20 uses) is a 300ms colour
-     change on hover. Declared once here so no link or button has to
-     repeat it. Transform and shadow stay opt-in via transition-* utilities,
-     since animating them everywhere is wasteful. */
   a,
   button {
     transition-property: color, background-color, border-color;
@@ -212,10 +221,6 @@
     outline-offset: 3px;
   }
 
-  :target,
-  section[id] {
-    scroll-margin-top: 84px;
-  }
 
   @media (prefers-reduced-motion: reduce) {
     html {
