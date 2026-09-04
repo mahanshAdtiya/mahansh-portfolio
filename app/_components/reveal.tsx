@@ -1,9 +1,8 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useRef } from "react";
+import { useRef } from "react";
 
-const useIsomorphicLayoutEffect =
-  typeof window !== "undefined" ? useLayoutEffect : useEffect;
+import { useIsomorphicLayoutEffect } from "@/hooks/use-isomorphic-layout-effect";
 
 const STAGGER_MS = 110;
 const MAX_STAGGER_STEPS = 4;

@@ -1,9 +1,8 @@
 "use client";
 
-import { Fragment, useEffect, useLayoutEffect, useState } from "react";
+import { Fragment, useState } from "react";
 
-const useIsomorphicLayoutEffect =
-  typeof window !== "undefined" ? useLayoutEffect : useEffect;
+import { useIsomorphicLayoutEffect } from "@/hooks/use-isomorphic-layout-effect";
 
 const DESKTOP = "(min-width: 64rem)";
 
