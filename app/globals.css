@@ -214,6 +214,13 @@
     transition-timing-function: var(--default-transition-timing-function);
   }
 
+  /* Marching-ants dashes along the stack graph's connectors. */
+  @keyframes ants {
+    to {
+      stroke-dashoffset: -110;
+    }
+  }
+
   @keyframes rise {
     from {
       opacity: 0;

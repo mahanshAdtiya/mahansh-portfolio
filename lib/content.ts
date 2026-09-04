@@ -282,7 +282,17 @@ export type StackGroup = {
   key: string;
   label: string;
   blurb: string;
-  skills: string[];
+  /** Path under public/, served at this URL. Not an import — public/ is
+      served as static files, not bundled as modules. */
+  icon: string;
+  skills: Skill[];
+};
+
+export type Skill = {
+  label: string;
+  /** Omitted where no logo exists — Foundations concepts, and AWS, whose
+      marks Simple Icons no longer carries. Those render as text chips. */
+  icon?: string;
 };
 
 export const STACK_CORE = {
@@ -291,7 +301,7 @@ export const STACK_CORE = {
 } as const;
 
 export const STACK_HINT =
-  "Hover a cluster to see what sits under it.";
+  "Hover a group to read what it is used for. Tap on a touch screen.";
 
 export const STACK_GROUPS: StackGroup[] = [
   {
@@ -299,30 +309,42 @@ export const STACK_GROUPS: StackGroup[] = [
     label: "Foundations",
     blurb:
       "The parts that outlast any framework: data structures and algorithms, OOP, REST API design, and distributed-systems thinking.",
-    skills: ["DSA", "OOP", "REST APIs", "Distributed sys."],
+    icon: "/icons/foundations.svg",
+    skills: [
+      { label: "DSA" },
+      { label: "OOP" },
+      { label: "REST APIs" },
+      { label: "Distributed sys." },
+    ],
   },
   {
     key: "frontend",
     label: "Frontend",
     blurb:
       "React and Next.js for the interface — storefronts, admin panels and internal tools that other teams use daily.",
-    skills: ["React.js", "Next.js", "JavaScript"],
+    icon: "/icons/frontend.svg",
+    skills: [
+      { label: "React.js", icon: "/icons/skills/react.svg" },
+      { label: "Next.js", icon: "/icons/skills/nextdotjs.svg" },
+      { label: "JavaScript", icon: "/icons/skills/javascript.svg" },
+    ],
   },
   {
     key: "backend",
     label: "Backend",
     blurb:
       "Kotlin with Spring Boot day to day, Golang for concurrent pipelines, Node and Express or FastAPI where they fit better.",
+    icon: "/icons/backend.svg",
     skills: [
-      "Kotlin",
-      "Spring Boot",
-      "Golang",
-      "Java",
-      "Python",
-      "C / C++",
-      "Node.js",
-      "Express.js",
-      "FastAPI",
+      { label: "Kotlin", icon: "/icons/skills/kotlin.svg" },
+      { label: "Spring Boot", icon: "/icons/skills/springboot.svg" },
+      { label: "Golang", icon: "/icons/skills/go.svg" },
+      { label: "Java", icon: "/icons/skills/openjdk.svg" },
+      { label: "Python", icon: "/icons/skills/python.svg" },
+      { label: "C / C++", icon: "/icons/skills/cplusplus.svg" },
+      { label: "Node.js", icon: "/icons/skills/nodedotjs.svg" },
+      { label: "Express.js", icon: "/icons/skills/express.svg" },
+      { label: "FastAPI", icon: "/icons/skills/fastapi.svg" },
     ],
   },
   {
@@ -330,14 +352,26 @@ export const STACK_GROUPS: StackGroup[] = [
     label: "Database",
     blurb:
       "PostgreSQL as the default store, MongoDB where documents suit, Redis for caching, Kafka for events, BigQuery for analytical loads.",
-    skills: ["PostgreSQL", "MongoDB", "Redis", "BigQuery", "Apache Kafka"],
+    icon: "/icons/database.svg",
+    skills: [
+      { label: "PostgreSQL", icon: "/icons/skills/postgresql.svg" },
+      { label: "MongoDB", icon: "/icons/skills/mongodb.svg" },
+      { label: "Redis", icon: "/icons/skills/redis.svg" },
+      { label: "BigQuery", icon: "/icons/skills/googlebigquery.svg" },
+    ],
   },
   {
     key: "cloud",
     label: "Cloud & tools",
     blurb:
       "AWS for compute and Lambda workloads, Docker for parity between local and production, Git and GitHub for everything else.",
-    skills: ["AWS", "Docker", "Git", "GitHub"],
+    icon: "/icons/cloud.svg",
+    skills: [
+      { label: "AWS" },
+      { label: "Docker", icon: "/icons/skills/docker.svg" },
+      { label: "Git", icon: "/icons/skills/git.svg" },
+      { label: "GitHub", icon: "/icons/skills/github.svg" },
+    ],
   },
 ];
 
