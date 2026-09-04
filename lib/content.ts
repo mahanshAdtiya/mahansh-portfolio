@@ -45,7 +45,7 @@ const heroCards: HeroCard[] = [
   },
   {
     label: "Stack",
-    title: "Kotlin · Spring Boot · Golang · Next.js",
+    title: "Spring Boot · Golang · Next.js · Node.js",
     detail: "PostgreSQL, Kafka, Redis, AWS",
   },
   {
@@ -64,7 +64,7 @@ export const HERO = {
   headline: "One engineer,",
   headlineEmphasis: "the whole stack.",
   intro:
-    "Freelance builds — web apps, storefronts, internal tools — taken from architecture to interface, by one person who does both.",
+    "Freelance builds — web apps, storefronts, internal tools — taken from architecture to interface, by one person who does everything.",
   scrollLabel: "Scroll",
 } as const;
 
@@ -81,7 +81,7 @@ export const ABOUT = {
     },
     {
       label: "Reaches for",
-      value: "Kotlin + Spring Boot, Golang, PostgreSQL, Kafka, Redis, Next.js",
+      value: "Spring Boot, Golang, PostgreSQL, Kafka, Redis, Next.js, Node.js",
     },
     {
       label: "Also happy doing",
@@ -90,12 +90,6 @@ export const ABOUT = {
     },
   ],
   metrics: [
-    {
-      figure: "5 min",
-      countTo: 5,
-      suffix: " min",
-      caption: "Cap on booking-dashboard data lag, replacing a BigQuery source",
-    },
     {
       figure: "70%",
       countTo: 70,
@@ -137,47 +131,63 @@ export const ROLES: Role[] = [
     title: "Software Engineer",
     years: "2025—now",
     dates: "Aug 2025 — Present",
-    place: "Sarjapur, Bengaluru",
-    tech: ["Kotlin", "Spring Boot", "PostgreSQL", "Kafka", "AWS Lambda", "BigQuery"],
+    place: "Bengaluru",
+    tech: ["Spring Boot","PostgreSQL","Kafka","AWS Lambda","BigQuery"],
     changed: [
-      "Improved booking dashboard data freshness by replacing a BigQuery source with a dataset capped at 5-minute lag, reducing supplier booking visibility by 80%.",
-      "Migrated booking dashboard exports from the application server to AWS Lambda, isolating resource-intensive BigQuery workloads from core APIs and improving service resource utilization.",
+      "Reduced booking dashboard data lag from ~60 minutes to at most 5 minutes by identifying and switching to a fresher source dataset, avoiding a more complex split-query architecture.",
+      "Migrated the Spring Boot platform from 2.5.11 to 3.5.4 and replaced H2-based tests with PostgreSQL containers for production-like integration testing.",
+      "Reworked redemption instructions from manually maintained Markdown into structured data, migrating existing listings while coordinating the migration strategy across design, product, and customer operations.",
+      "Replaced five independent synchronous, long-running workflows with a unified asynchronous job system backed by Kafka and a shared job model, covering exports, LLM listing generation, vendor catalog processing, combined-entity generation, and listing classification.",
+      "Integrated Experience Bank into the LLM-powered listing generation pipeline by translating its APIs into LLM tools and recipes, validating generated listing data against the expected workflow.",
+      "Introduced structured retries, logging, and Grafana metrics across Slack alerts and BigQuery events, making failures traceable down to individual operations and error causes.",
+      "Re-architected the BigQuery events service around Kafka, allowing it to acknowledge incoming events immediately, retry failed processing, and batch writes into BigQuery instead of synchronously writing every event."
     ],
     daily: [
-      "Designed a modular, state-driven async job orchestration layer using Spring Boot, Kotlin, PostgreSQL, and Kafka, decoupling workflows from feature-specific services, while leading the migration from Spring Boot 2.5 to 3.x.",
-      "Re-architected Slack notifications into a fire-and-forget dispatcher with 3 retries, exponential jitter, and Grafana metrics, standardizing event types with Kotlin sealed classes and enabling failure tracking by event and error reason.",
-    ],
+      "End-to-end backend feature development using Kotlin and Spring Boot, with PostgreSQL, Kafka, and BigQuery.",
+      "Designing and implementing asynchronous workflows, integrations, data migrations, and event-driven systems.",
+      "Investigating production issues through logs and metrics, optimizing services, and working with product, design, and operations teams on technical solutions."
+    ]
   },
   {
     company: "Lila Games",
     title: "Full-Stack Developer",
     years: "2025",
     dates: "Mar 2025 — Aug 2025",
-    place: "Indiranagar, Bengaluru",
-    tech: ["Golang", "React", "Node.js", "Express", "Redis", "Nakama"],
+    place: "Bengaluru",
+    tech: ["Golang","React","Express","FastAPI","Redis","Nakama"],
     changed: [
-      "Led the development of a visual branching-flow editor using React, Node.js, Express.js, and Redis, replacing manual JSON-based configuration, reducing setup time per chapter from 1 day to a few hours.",
-      "Developed integration tests across game features using Golang and Nakama, uncovering and resolving multiple system-level bugs and improving overall system reliability.",
+      "Built a visual branching editor that replaced manually edited JSON configurations for interactive gameplay videos, reducing the time to configure a chapter from ~1 day to under 2 hours.",
+      "Built and shipped the Valor Points system from scratch, allowing players to complete missions, earn Valor Points, unlock rewards, and claim rewards in bulk, with season-based resets.",
+      "Built automated end-to-end integration tests and unit tests across 10+ game features, running on every PR and across staging, testing, and production branches to catch configuration and system-level issues before they reached players.",
+      "Built a non-blocking event ingestion pipeline for CleverTap using Go channels and worker goroutines, buffering and batching events for bulk ingestion with retry handling while keeping event tracking from adding latency to the main application flow.",
+      "Fixed OAuth session expiry for Google and Apple login by moving token refresh handling to the server, allowing expired access tokens to be refreshed using refresh tokens without logging users out.",
     ],
+
     daily: [
-      "Built an asynchronous event ingestion pipeline with batching and retry mechanisms in Golang using goroutines and channels, decoupling event generation from downstream processing and batching events.",
-      "Built an internal admin panel using Next.js for game configuration, enabling QA teams to configure test environments and provision in-game resources without developer intervention.",
-    ],
+      "Developing gameplay and backend features across Golang, Nakama, and supporting services.",
+      "Writing automated tests, investigating failures, and debugging issues across game logic and configuration-driven systems.",
+      "Working with product and game teams on feature requirements, gameplay configuration, and internal tooling."
+    ]
   },
   {
     company: "Plunes Healthcare",
     title: "Full-Stack Developer",
     years: "2024",
     dates: "Jun 2024 — Sep 2024",
-    place: "Gurugram, Haryana",
-    tech: ["Node", "Express", "MongoDB", "Next.js"],
+    place: "Gurugram",
+    tech: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS"],
     changed: [
-      "Optimized page load performance by lazy-loading non-critical data and deferring API calls until required, reducing initial loading time by 25%.",
-      "Optimized APIs by reducing unnecessary MongoDB data retrieval and introducing caching for frequently accessed data.",
+      "Built an insurance CRM from scratch, supporting the workflow from customer insurance requests through operations processing, insurance-provider review, and financial settlement.",
+      "Built and shipped a client-facing website from scratch using React and Tailwind CSS.",
+      "Improved slow APIs by reducing unnecessary MongoDB document retrieval, moving filtering from application memory into database queries, and adding indexes for frequently queried fields.",
+      "Introduced caching for data that changed infrequently, reducing repeated database work on frequently accessed APIs.",
     ],
+
     daily: [
-      "Built an internal insurance CRM panel using Node, Express, and MongoDB, from scratch.",
-    ],
+      "Built features end-to-end across React, Node.js, Express, and MongoDB, from UI components to APIs and database changes.",
+      "Worked across both internal tools and customer-facing products, integrating frontend interfaces with backend APIs.",
+      "Debugged and optimized application performance by profiling API behavior, inspecting database queries, and addressing bottlenecks."
+],
   },
 ];
 
