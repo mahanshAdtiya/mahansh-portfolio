@@ -1,13 +1,6 @@
 type SectionHeadingProps = {
-  /** Two-digit section number, e.g. "01" */
   num: string;
   title: string;
-  /**
-   * Spacing below the heading, which differs per section in the design.
-   * Deliberately not defaulted: a default `mb-*` here could not be
-   * reliably overridden from the caller, since equal-specificity classes
-   * are resolved by stylesheet order, not by className order.
-   */
   className?: string;
 };
 
