@@ -18,7 +18,9 @@ export function GroupCard({
   return (
     <div
       className={`h-full border p-4 transition-[background-color,border-color] ${
-        active ? "border-accent bg-accent/[.08]" : "border-edge bg-transparent"
+        active
+          ? "border-accent bg-[color-mix(in_oklab,var(--accent)_8%,var(--page))]"
+          : "border-edge bg-page"
       }`}
     >
       <div className="mb-3.5 flex items-center gap-3.5">
