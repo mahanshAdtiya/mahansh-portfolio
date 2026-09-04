@@ -191,13 +191,28 @@ export type SelectedWork = {
   tech: string[];
   demo: {
     kind: "latency" | "retrieval";
+    /** Small mono line above the widget */
     caption: string;
+    /** Which state the demo opens in */
+    initialOn: boolean;
+    /** Toggle label per state; identical for both if it does not change */
     button: { off: string; on: string };
     state: {
-      off: { label: string; primary: string; note: string; detail: string };
-      on: { label: string; primary: string; note: string; detail: string };
+      off: DemoState;
+      on: DemoState;
     };
   };
+};
+
+export type DemoState = {
+  /** Accent line above the widget. Omitted when the widget speaks for itself. */
+  label?: string;
+  /** Footer, left */
+  primary: string;
+  /** Footer, right */
+  note: string;
+  /** Fine print under the rule */
+  detail: string;
 };
 
 export const SELECTED_WORK: SelectedWork[] = [
@@ -211,7 +226,8 @@ export const SELECTED_WORK: SelectedWork[] = [
     demo: {
       kind: "latency",
       caption: "Region latency · try it",
-      button: { off: "Show after", on: "Show before" },
+      initialOn: false,
+      button: { off: "Switch region ⇄", on: "Switch region ⇄" },
       state: {
         off: {
           label: "Before · US-East origin",
@@ -240,19 +256,18 @@ export const SELECTED_WORK: SelectedWork[] = [
     demo: {
       kind: "retrieval",
       caption: "Context sent to the LLM",
+      initialOn: true,
       button: { off: "Token-aware retrieval", on: "Send full history" },
       state: {
         off: {
-          label: "Full conversation history",
-          primary: "48 / 48 chunks sent",
-          note: "",
+          primary: "Full conversation history",
+          note: "48 / 48 chunks sent",
           detail:
             "Sending everything burns tokens on history the model does not need for this turn.",
         },
         on: {
-          label: "Token-aware retrieval",
-          primary: "9 / 48 chunks sent",
-          note: "",
+          primary: "Token-aware retrieval",
+          note: "14 / 48 chunks sent",
           detail:
             "Semantic search over pgvector picks only the chunks that matter, cutting tokens and API cost while keeping relevant context.",
         },
