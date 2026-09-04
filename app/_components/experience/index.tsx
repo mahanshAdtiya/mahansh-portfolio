@@ -18,7 +18,8 @@ export function Experience() {
         <RoleTabs
           items={ROLES.map((role) => ({
             id: role.company.toLowerCase().replace(/\s+/g, "-"),
-            label: <RoleTabLabel role={role} />,
+            label: <RoleTabLabel role={role} active={false} />,
+            labelActive: <RoleTabLabel role={role} active />,
             panel: <RolePanel role={role} />,
           }))}
         />

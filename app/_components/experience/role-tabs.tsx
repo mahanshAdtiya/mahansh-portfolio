@@ -11,6 +11,7 @@ type RoleTabsProps = {
   items: {
     id: string;
     label: React.ReactNode;
+    labelActive: React.ReactNode;
     panel: React.ReactNode;
   }[];
 };
@@ -18,22 +19,8 @@ type RoleTabsProps = {
 export function RoleTabs({ items }: RoleTabsProps) {
   const [open, setOpen] = useState<number | null>(null);
 
-  /**
-   * The one place a media query genuinely has to be in JavaScript: which
-   * panel starts open is state, not layout, and CSS cannot set state.
-   * Mobile opens collapsed like an accordion; desktop needs a panel in the
-   * second column or half the section is empty on arrival.
-   *
-   * useLayoutEffect, so the desktop panel is open before the first paint
-   * rather than popping in after it. The layout itself is still pure CSS —
-   * only the starting value depends on width.
-   */
   useIsomorphicLayoutEffect(() => {
     const query = window.matchMedia(DESKTOP);
-
-    // Desktop always keeps one role open, or the second column sits empty.
-    // Mobile starts fully collapsed, like the design's accordion. Re-run on
-    // change so resizing or rotating into desktop opens the first role.
     const sync = () =>
       setOpen((current) => (query.matches && current === null ? 0 : current));
 
@@ -42,8 +29,6 @@ export function RoleTabs({ items }: RoleTabsProps) {
     return () => query.removeEventListener("change", sync);
   }, []);
 
-  // Clicking the open role collapses it — but only where collapsing makes
-  // sense. On desktop that would blank the panel column, so it stays open.
   function handleClick(index: number) {
     const isDesktop = window.matchMedia(DESKTOP).matches;
     setOpen((current) => (current === index && !isDesktop ? null : index));
@@ -62,11 +47,13 @@ export function RoleTabs({ items }: RoleTabsProps) {
               aria-controls={`role-panel-${item.id}`}
               onClick={() => handleClick(i)}
               data-theme={on ? "dark" : undefined}
-              className={`flex min-h-11 items-baseline justify-between gap-3.5 border bg-page p-[18px] text-left text-heading transition-[background-color,border-color] lg:col-start-1 lg:self-start ${
-                on ? "border-page" : "border-edge"
+              className={`group/role flex min-h-11 items-baseline justify-between gap-3.5 border bg-page p-[18px] text-left text-heading transition-[background-color,border-color] lg:col-start-1 lg:self-start ${
+                on
+                  ? "border-page"
+                  : "border-edge hover:border-heading hover:bg-heading"
               }`}
             >
-              {item.label}
+              {on ? item.labelActive : item.label}
             </button>
 
             <div

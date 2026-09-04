@@ -20,12 +20,18 @@ export function NowCard() {
                 href={card.href}
                 target={card.external ? "_blank" : undefined}
                 rel={card.external ? "noreferrer" : undefined}
-                className="text-[clamp(15px,3.6vw,17px)] leading-[1.4] text-accent border-b border-accent/40"
+                className="group/link relative text-[clamp(15px,3.6vw,17px)] leading-[1.4] text-accent after:absolute after:inset-x-0 after:-bottom-px after:h-px after:bg-accent/40 after:transition-[height,background-color] hover:after:h-0.5 hover:after:bg-accent"
               >
                 {card.title}
                 {card.external && (
                   <>
-                    <span aria-hidden="true"> ↗</span>
+                    {" "}
+                    <span
+                      aria-hidden="true"
+                      className="inline-block transition-[translate] group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5"
+                    >
+                      ↗
+                    </span>
                     <span className="sr-only"> (opens in a new tab)</span>
                   </>
                 )}
