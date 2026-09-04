@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Instrument_Serif, Sora, Space_Mono } from "next/font/google";
 import { SiteHeader } from "./_components/site-header";
 import { Footer } from "./_components/footer";
+import { HoverSound } from "./_components/hover-sound";
 import "./globals.css";
 
 const sora = Sora({
@@ -42,6 +43,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <SiteHeader />
         <main className="pt-header">{children}</main>
         <Footer />
+        <HoverSound />
       </body>
     </html>
   );

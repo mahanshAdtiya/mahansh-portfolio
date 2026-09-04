@@ -30,6 +30,7 @@ export function SiteHeader() {
           <a
             href={SITE.resume}
             download
+            data-sound="click"
             className="flex min-h-11 items-center justify-between gap-3 border-t border-edge-strong bg-surface px-[18px] py-[15px] text-accent hover:bg-accent hover:text-on-accent"
           >
             <span>{CONTACT.resumeLabel}</span>

@@ -27,6 +27,7 @@ export function WorkDemo({ demo }: { demo: SelectedWork["demo"] }) {
         <button
           type="button"
           onClick={() => setOn((prev) => !prev)}
+          data-sound="click"
           aria-controls={readoutId}
           className="min-h-11 rounded-pill border border-edge-strong px-3.5 py-3 font-mono text-eyebrow-sm uppercase text-heading hover:border-accent hover:text-accent"
         >

@@ -20,6 +20,7 @@ export function NowCard() {
                 href={card.href}
                 target={card.external ? "_blank" : undefined}
                 rel={card.external ? "noreferrer" : undefined}
+                data-sound="hover"
                 className="group/link relative text-[clamp(15px,3.6vw,17px)] leading-[1.4] text-accent after:absolute after:inset-x-0 after:-bottom-px after:h-px after:bg-accent/40 after:transition-[height,background-color] hover:after:h-0.5 hover:after:bg-accent"
               >
                 {card.title}

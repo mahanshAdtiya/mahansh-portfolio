@@ -43,6 +43,7 @@ export function RoleTabs({ items }: RoleTabsProps) {
           <Fragment key={item.id}>
             <button
               type="button"
+              data-sound="hover"
               aria-expanded={on}
               aria-controls={`role-panel-${item.id}`}
               onClick={() => handleClick(i)}

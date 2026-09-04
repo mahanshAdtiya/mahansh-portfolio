@@ -15,6 +15,7 @@ export function DesktopNav() {
           <a
             key={item.href}
             href={item.href}
+            data-sound="click"
             className="text-muted hover:text-accent"
           >
             {item.num} {item.label}
@@ -25,6 +26,7 @@ export function DesktopNav() {
       <a
         href={SITE.resume}
         download
+        data-sound="click"
         className="border border-heading rounded-pill px-3.5 py-2 hover:bg-heading hover:text-page"
       >
         {CONTACT.resumeLabel} <span aria-hidden="true">↓</span>

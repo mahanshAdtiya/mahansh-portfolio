@@ -1,4 +1,4 @@
-import { CONTACT, SITE } from "@/lib/content";
+import { CONTACT } from "@/lib/content";
 import { Reveal } from "./reveal";
 import { SectionHeading } from "./section-heading";
 
@@ -27,6 +27,7 @@ export function Contact() {
                 href={link.href}
                 target={link.external ? "_blank" : undefined}
                 rel={link.external ? "noreferrer" : undefined}
+                data-sound="hover"
                 className="block h-full bg-page px-6 py-[26px] text-heading hover:bg-surface-hover"
               >
                 <span className="mb-2.5 block font-mono text-eyebrow-sm tracking-[.14em] uppercase text-muted">

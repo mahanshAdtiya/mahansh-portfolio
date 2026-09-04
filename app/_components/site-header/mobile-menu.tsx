@@ -26,6 +26,7 @@ export function MobileMenu({ children }: { children: React.ReactNode }) {
       <button
         type="button"
         onClick={() => setOpen((prev) => !prev)}
+        data-sound="click"
         aria-expanded={open}
         aria-controls="mobile-menu-panel"
         className="min-h-11 rounded-pill border border-heading px-3.5 font-mono text-eyebrow-sm tracking-[.12em] uppercase hover:bg-heading hover:text-page"

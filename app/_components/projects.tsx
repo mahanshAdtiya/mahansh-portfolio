@@ -21,6 +21,7 @@ export function Projects() {
                 href={project.href}
                 target="_blank"
                 rel="noreferrer"
+                data-sound="hover"
                 className={`group relative block h-full border border-edge py-[22px] pl-[22px] pr-11 transition-[translate,border-color,box-shadow] duration-[560ms] ${EASE} hover:-translate-y-1.5 hover:border-heading hover:shadow-lift`}
               >
                 <span
