@@ -1,5 +1,6 @@
 import { PROJECTS } from "@/lib/content";
 import { Reveal } from "./reveal";
+import { UnderlineReveal } from "./underline-reveal";
 import { SectionHeading } from "./section-heading";
 
 const EASE = "ease-[cubic-bezier(.16,.84,.24,1)]";
@@ -43,8 +44,12 @@ export function Projects() {
                   </svg>
                 </span>
 
+                {/* Scoped to the title itself, not the tile: the hover group
+                    lives on the UnderlineReveal root. */}
                 <h3 className="mb-2 font-display text-[26px] leading-none">
-                  {project.title}
+                  <UnderlineReveal as="span" className="pb-1">
+                    {project.title}
+                  </UnderlineReveal>
                 </h3>
                 <p className="mb-3.5 text-sm leading-[1.65]">
                   {project.description}

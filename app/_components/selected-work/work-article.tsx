@@ -1,4 +1,5 @@
 import type { SelectedWork } from "@/lib/content";
+import { UnderlineReveal } from "../underline-reveal";
 import { WorkDemo } from "./work-demo";
 
 export function WorkArticle({
@@ -27,7 +28,9 @@ export function WorkArticle({
         </p>
 
         <h3 className="mb-[18px] text-[clamp(38px,9vw,72px)] leading-none">
-          {work.title}
+          <UnderlineReveal as="span" className="pb-2">
+            {work.title}
+          </UnderlineReveal>
         </h3>
 
         <p className="mb-[22px] text-[15px] leading-[1.75]">{work.summary}</p>

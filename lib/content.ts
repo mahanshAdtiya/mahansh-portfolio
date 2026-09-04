@@ -396,7 +396,7 @@ export const PROJECTS: Project[] = [
     title: "msh-custom-shell",
     description: "A shell written in C, running the basic Linux commands.",
     tech: "C · Linux",
-    href: SITE.github,
+    href: "https://github.com/mahanshAdtiya/Msh-Custom-Shell",
   },
   {
     title: "Tank-Star",

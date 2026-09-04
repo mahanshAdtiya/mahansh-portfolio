@@ -1,18 +1,19 @@
 import { NAV, SITE, CONTACT } from "@/lib/content";
+import { UnderlineReveal } from "../underline-reveal";
 
 export function DesktopNav() {
   return (
     <div className="hidden lg:flex flex-row items-center gap-6 font-mono text-eyebrow tracking-[.1em] uppercase whitespace-nowrap">
       <nav className="flex flex-row items-center gap-[clamp(12px,1.8vw,26px)]">
         {NAV.map((item) => (
-          <a
+          <UnderlineReveal
             key={item.href}
             href={item.href}
             data-sound="click"
-            className="text-muted hover:text-accent"
+            className="pb-1 text-muted hover:text-accent"
           >
             {item.num} {item.label}
-          </a>
+          </UnderlineReveal>
         ))}
       </nav>
 
