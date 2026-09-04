@@ -34,7 +34,6 @@ export function StackGraph({
         onPointerCancel={drag.onPointerUp}
         className="relative grid w-full max-w-full gap-0.5 md:block md:aspect-[1000/620] md:min-h-[700px] lg:min-h-[640px]"
       >
-        {/* Recomputed every frame while dragging, so no transition on `d`. */}
         <svg
           viewBox={`0 0 ${VIEW.width} ${VIEW.height}`}
           preserveAspectRatio="none"

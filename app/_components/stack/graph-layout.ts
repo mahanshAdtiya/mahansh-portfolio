@@ -1,8 +1,3 @@
-/**
- * Node positions in the SVG's own 1000×620 coordinate space, so the cards and
- * the connectors share one system. Rendered as percentages, which keeps the
- * graph fluid and lets the initial layout be server-rendered.
- */
 export type Point = { x: number; y: number };
 
 export const VIEW = { width: 1000, height: 620 };
@@ -17,7 +12,6 @@ export const INITIAL_POSITIONS: Record<string, Point> = {
   cloud: { x: 850, y: 471 },
 };
 
-/** Foundations sits alone on the top row, so it can afford to be wider. */
 export const NODE_WIDTH: Record<string, string> = {
   foundations: "md:w-[38%] lg:w-[30%]",
   frontend: "md:w-[30%] lg:w-[25%]",
@@ -26,7 +20,6 @@ export const NODE_WIDTH: Record<string, string> = {
   cloud: "md:w-[30%] lg:w-[25%]",
 };
 
-/** Keeps a dragged card from being pushed off the canvas entirely. */
 const MARGIN = { x: 90, y: 70 };
 
 export function clampToCanvas({ x, y }: Point): Point {
@@ -36,14 +29,6 @@ export function clampToCanvas({ x, y }: Point): Point {
   };
 }
 
-/**
- * A cubic bezier from a node to the core. Control points are pulled halfway
- * along the horizontal gap, which gives a gentle S for side nodes and
- * degenerates to a straight line for ones directly above or below.
- *
- * Both ends sit at element centres; the cards are painted over the SVG, so
- * the line appears to start at their edges.
- */
 export function edgePath(from: Point, to: Point): string {
   const bend = (to.x - from.x) / 2;
   return `M ${from.x} ${from.y} C ${from.x + bend} ${from.y}, ${to.x - bend} ${to.y}, ${to.x} ${to.y}`;

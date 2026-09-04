@@ -1,13 +1,5 @@
 import type { StackGroup } from "@/lib/content";
 
-/**
- * Purely presentational. The whole card is the hover target, so the
- * interaction handlers live on the wrapper in stack-graph.tsx.
- *
- * Not a <button>: the design's graph nodes are focusable divs, and a button
- * may only contain phrasing content — a <ul> of chips inside one makes the
- * browser treat the card as a single atomic control.
- */
 export function GroupCard({
   group,
   active,
@@ -28,7 +20,6 @@ export function GroupCard({
           aria-hidden="true"
           className="flex size-[42px] flex-none items-center justify-center rounded-xl bg-accent [box-shadow:0_0_0_6px_color-mix(in_oklab,var(--accent)_10%,transparent),0_8px_22px_-10px_color-mix(in_oklab,var(--accent)_60%,transparent)]"
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={group.icon} alt="" width={22} height={22} />
         </span>
 
@@ -45,9 +36,6 @@ export function GroupCard({
       <ul className="flex flex-wrap items-center gap-2.5">
         {group.skills.map((skill) =>
           skill.icon ? (
-            /* Bare logo, no box — the design only borders text chips, and a
-               32px bordered square per skill made every card outgrow its
-               slot in the graph. */
             <li key={skill.label} className="group/chip relative flex">
               <span
                 aria-hidden="true"

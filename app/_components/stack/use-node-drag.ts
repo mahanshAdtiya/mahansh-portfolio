@@ -9,9 +9,7 @@ import {
   type Point,
 } from "./graph-layout";
 
-/** Below this the graph is a stacked list, where coordinates mean nothing. */
 const DESKTOP = "(min-width: 48rem)";
-/** Movement under this reads as a click, not a drag. */
 const DRAG_THRESHOLD_PX = 4;
 const RESET_MS = 460;
 
@@ -21,7 +19,6 @@ type Drag = {
   startX: number;
   startY: number;
   origin: Point;
-  /** Cached so a resize mid-drag cannot skew the mapping. */
   rect: DOMRect;
   moved: boolean;
 };
@@ -30,7 +27,6 @@ export function useNodeDrag(containerRef: React.RefObject<HTMLDivElement | null>
   const [positions, setPositions] = useState(INITIAL_POSITIONS);
   const drag = useRef<Drag | null>(null);
   const resetFrame = useRef<number | null>(null);
-  /** Survives pointerup so the click that follows a drag can be ignored. */
   const suppressClick = useRef(false);
 
   function cancelReset() {
@@ -42,15 +38,12 @@ export function useNodeDrag(containerRef: React.RefObject<HTMLDivElement | null>
 
   function onPointerDown(event: React.PointerEvent, key: string) {
     if (event.button !== 0) return;
-    // Grabbing a card mid-reset should take over, not fight the tween.
     cancelReset();
     if (!window.matchMedia(DESKTOP).matches) return;
 
     const rect = containerRef.current?.getBoundingClientRect();
     if (!rect) return;
 
-    // Capture keeps events coming to this element even when the pointer
-    // outruns it — without it, a fast drag simply stops following.
     event.currentTarget.setPointerCapture(event.pointerId);
 
     drag.current = {
@@ -92,19 +85,12 @@ export function useNodeDrag(containerRef: React.RefObject<HTMLDivElement | null>
     drag.current = null;
   }
 
-  /** True when the click should be swallowed because it ended a drag. */
   function consumeClickAfterDrag() {
     const suppressed = suppressClick.current;
     suppressClick.current = false;
     return suppressed;
   }
 
-  /**
-   * Tweened rather than transitioned in CSS: the connector paths are derived
-   * from this same state, so animating the state moves the cards and the
-   * edges together. A CSS transition on left/top would glide the cards while
-   * the paths snapped.
-   */
   function reset() {
     cancelReset();
 
