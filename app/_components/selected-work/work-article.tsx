@@ -33,9 +33,21 @@ export function WorkArticle({
         </p>
 
         <h3 className="mb-[18px] text-[clamp(38px,9vw,72px)] leading-none">
-          <UnderlineReveal as="span" className="pb-2">
-            {work.title}
-          </UnderlineReveal>
+          {work.href ? (
+            <UnderlineReveal
+              href={work.href}
+              target="_blank"
+              rel="noreferrer"
+              data-sound="hover"
+              className="pb-2"
+            >
+              {work.title}
+            </UnderlineReveal>
+          ) : (
+            <UnderlineReveal as="span" className="pb-2">
+              {work.title}
+            </UnderlineReveal>
+          )}
         </h3>
 
         <p className="mb-[22px] text-[15px] leading-[1.75]">{work.summary}</p>

@@ -196,6 +196,7 @@ export const ROLES: Role[] = [
 export type SelectedWork = {
   slug: string;
   title: string;
+  href?: string;
   meta: string[];
   summary: string;
   tech: string[];
@@ -269,6 +270,7 @@ export const SELECTED_WORK: SelectedWork[] = [
   {
     slug: "anarchist",
     title: "Anarchist",
+    href: "https://www.anarchist.co.in/",
     meta: ["Aug 2026", "Deployed"],
     summary:
       "A full-stack D2C e-commerce platform with its own CMS panel, architecture and build owned solo — then tuned for multi-region deployment.",
@@ -299,10 +301,11 @@ export const SELECTED_WORK: SelectedWork[] = [
   {
     slug: "cue",
     title: "Cue",
+    href: "https://cue-app.up.railway.app/",
     meta: ["Aug 2025", "Deployed"],
     summary:
       "A social media-tracking platform for movies and TV shows — with personal and shared watch tracking, rewatch history, progress tracking, ratings and favorites.",
-    tech: ["Next.js", "TypeScript", "PostgreSQL", "TMDB API", "Next-Auth"],
+    tech: ["Next.js", "PostgreSQL", "TMDB API"],
     demo: {
       kind: "tabs",
       caption: "Four things Cue does · try them",
@@ -400,10 +403,11 @@ export const SELECTED_WORK: SelectedWork[] = [
   {
     slug: "mahansh-ai",
     title: "mahansh.AI",
+    href: "https://mahanshai.vercel.app/",
     meta: ["Nov 2024", "Deployed", "GitHub"],
     summary:
       "An AI conversational platform with RAG-based long-term memory — OpenAI embeddings and semantic search over pgvector for context-aware replies.",
-    tech: ["Kotlin", "pgvector", "OpenAI embeddings", "Next.js"],
+    tech: ["Next.js", "pgvector", "OpenAI embeddings"],
     demo: {
       kind: "retrieval",
       caption: "Context sent to the LLM",
