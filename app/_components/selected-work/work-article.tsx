@@ -1,6 +1,11 @@
-import type { SelectedWork } from "@/lib/content";
+import type { Demo, SelectedWork } from "@/lib/content";
 import { UnderlineReveal } from "../underline-reveal";
+import { CueDemo } from "./cue";
 import { WorkDemo } from "./work-demo";
+
+function demoFor(demo: Demo) {
+  return demo.kind === "tabs" ? <CueDemo demo={demo} /> : <WorkDemo demo={demo} />;
+}
 
 export function WorkArticle({
   work,
@@ -47,7 +52,7 @@ export function WorkArticle({
         </ul>
       </div>
 
-      <WorkDemo demo={work.demo} />
+      {demoFor(work.demo)}
     </article>
   );
 }

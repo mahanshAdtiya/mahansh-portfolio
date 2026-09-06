@@ -199,15 +199,19 @@ export type SelectedWork = {
   meta: string[];
   summary: string;
   tech: string[];
-  demo: {
-    kind: "latency" | "retrieval";
-    caption: string;
-    initialOn: boolean;
-    button: { off: string; on: string };
-    state: {
-      off: DemoState;
-      on: DemoState;
-    };
+  demo: Demo;
+};
+
+export type Demo = ToggleDemo | TabsDemo;
+
+export type ToggleDemo = {
+  kind: "latency" | "retrieval";
+  caption: string;
+  initialOn: boolean;
+  button: { off: string; on: string };
+  state: {
+    off: DemoState;
+    on: DemoState;
   };
 };
 
@@ -216,6 +220,49 @@ export type DemoState = {
   primary: string;
   note: string;
   detail: string;
+};
+
+export type TabsDemo = {
+  kind: "tabs";
+  caption: string;
+  tabs: CueTab[];
+};
+
+export type CueTab =
+  | { id: "progress"; label: string; panel: ProgressPanel }
+  | { id: "shared"; label: string; panel: SharedPanel }
+  | { id: "rewatch"; label: string; panel: RewatchPanel }
+  | { id: "ratings"; label: string; panel: RatingPanel };
+
+export type ProgressPanel = {
+  title: string;
+  total: number;
+  initial: number;
+  button: { mark: string; reset: string };
+  status: { idle: string; partial: string; done: string };
+  note: { partial: string; done: string };
+};
+
+export type SharedPanel = {
+  title: string;
+  watchers: { name: string; at: string; percent: number }[];
+  mode: { on: string; off: string };
+  button: { on: string; off: string };
+  count: { on: string; off: string };
+  note: { on: string; off: string };
+};
+
+export type RewatchPanel = {
+  title: string;
+  passes: { label: string; date: string; rating: number; note: string }[];
+};
+
+export type RatingPanel = {
+  title: string;
+  initial: number;
+  labels: string[];
+  favourite: { initial: boolean; on: string; off: string };
+  note: string;
 };
 
 export const SELECTED_WORK: SelectedWork[] = [
@@ -247,6 +294,107 @@ export const SELECTED_WORK: SelectedWork[] = [
             "Backend and PostgreSQL relocated closer to Indian users, with the storefront served from the Vercel edge network.",
         },
       },
+    },
+  },
+  {
+    slug: "cue",
+    title: "Cue",
+    meta: ["Aug 2025", "Deployed"],
+    summary:
+      "A social media-tracking platform for movies and TV shows — with personal and shared watch tracking, rewatch history, progress tracking, ratings and favorites.",
+    tech: ["Next.js", "TypeScript", "PostgreSQL", "TMDB API", "Next-Auth"],
+    demo: {
+      kind: "tabs",
+      caption: "Four things Cue does · try them",
+      tabs: [
+        {
+          id: "progress",
+          label: "Progress",
+          panel: {
+            title: "Season 1 · episode grid",
+            total: 16,
+            initial: 5,
+            button: { mark: "Mark watched ✓", reset: "Reset ↺" },
+            status: {
+              idle: "Not started",
+              partial: "Season 1 · in progress",
+              done: "Season complete",
+            },
+            note: {
+              partial:
+                "Progress is stored per user and per season, so a shared watch keeps both people’s positions separate.",
+              done: "Finished seasons move into rewatch history, where a second pass gets its own progress and rating.",
+            },
+          },
+        },
+        {
+          id: "shared",
+          label: "Shared",
+          panel: {
+            title: "Severance · Season 1",
+            watchers: [
+              { name: "You", at: "Ep 9 of 16", percent: 56 },
+              { name: "Kritika", at: "Ep 5 of 16", percent: 31 },
+            ],
+            mode: { on: "Shared watch · 2 people", off: "Personal watch" },
+            button: { on: "Make it personal", off: "Share this watch" },
+            count: { on: "Both positions tracked", off: "One position tracked" },
+            note: {
+              on: "A shared watch keeps a separate position per person, so neither gets spoiled by the other being further ahead.",
+              off: "Personal watches stay private. Sharing one invites another account onto the same title without merging progress.",
+            },
+          },
+        },
+        {
+          id: "rewatch",
+          label: "Rewatch",
+          panel: {
+            title: "Rewatch history · pick a pass",
+            passes: [
+              {
+                label: "First watch",
+                date: "Mar 2024",
+                rating: 5,
+                note: "The original pass, logged episode by episode as it aired. Ratings are stored per pass, not per title.",
+              },
+              {
+                label: "Second watch",
+                date: "Nov 2024",
+                rating: 4,
+                note: "A rewatch starts its own progress from zero, so the first pass stays intact as a record.",
+              },
+              {
+                label: "With Kritika",
+                date: "Jun 2025",
+                rating: 5,
+                note: "A rewatch can also be a shared watch — two people, one pass, separate positions.",
+              },
+            ],
+          },
+        },
+        {
+          id: "ratings",
+          label: "Ratings",
+          panel: {
+            title: "Rate it",
+            initial: 4,
+            labels: [
+              "Unrated",
+              "Not for me",
+              "It was fine",
+              "Worth a watch",
+              "Really good",
+              "All-time favourite",
+            ],
+            favourite: {
+              initial: true,
+              on: "In favourites ♥",
+              off: "Add to favourites ♡",
+            },
+            note: "Ratings and favourites are stored separately, so a title can sit in favourites without ever being scored — and be scored without becoming one.",
+          },
+        },
+      ],
     },
   },
   {
@@ -384,13 +532,6 @@ export type Project = {
 };
 
 export const PROJECTS: Project[] = [
-  {
-    title: "BingeHub",
-    description:
-      "Tracks everything you've watched, want to watch, and rate — movies, shows, anime.",
-    tech: "Next.js · MongoDB · Next-Auth",
-    href: SITE.github,
-  },
   {
     title: "msh-custom-shell",
     description: "A shell written in C, running the basic Linux commands.",
