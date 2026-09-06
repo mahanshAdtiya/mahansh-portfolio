@@ -201,11 +201,8 @@ export type SelectedWork = {
   tech: string[];
   demo: {
     kind: "latency" | "retrieval";
-    /** Small mono line above the widget */
     caption: string;
-    /** Which state the demo opens in */
     initialOn: boolean;
-    /** Toggle label per state; identical for both if it does not change */
     button: { off: string; on: string };
     state: {
       off: DemoState;
@@ -215,13 +212,9 @@ export type SelectedWork = {
 };
 
 export type DemoState = {
-  /** Accent line above the widget. Omitted when the widget speaks for itself. */
   label?: string;
-  /** Footer, left */
   primary: string;
-  /** Footer, right */
   note: string;
-  /** Fine print under the rule */
   detail: string;
 };
 
@@ -292,16 +285,12 @@ export type StackGroup = {
   key: string;
   label: string;
   blurb: string;
-  /** Path under public/, served at this URL. Not an import — public/ is
-      served as static files, not bundled as modules. */
   icon: string;
   skills: Skill[];
 };
 
 export type Skill = {
   label: string;
-  /** Omitted where no logo exists — Foundations concepts, and AWS, whose
-      marks Simple Icons no longer carries. Those render as text chips. */
   icon?: string;
 };
 
